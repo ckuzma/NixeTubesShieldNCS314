@@ -1,45 +1,60 @@
-const String FirmwareVersion = "018600";
- #define HardwareVersion "NCS314 for HW 2.x"
+/*
+NIXIE CLOCK SHIELD NCS314 v2.x by GRA & AFCH (fominalec@gmail.com)
+
+Additional changes by ckuzma (https:github.com/ckuzma) for running
+on NCS312 v1.3 shield atop an Arduino Mega 2560.
+
+# Changelog
+1.86.01 06.04.2020
+- Added: Booleans for manipulating startup / runtime behavior
+1.86 23.02.2020
+- GPS synchronization algorithm changed
+1.85.3 23.02.2020
+- Added: DS3231 internal temperature sensor self test: 5 beeps if fail.
+1.85.2 21.02.2020
+- GPS parser has been replaced by NEOGPS
+1.85 24.04.2019
+- Fixed: Bug with time zones more than +-9
+1.84 08.04.2019
+- LEDs functions moved to external file
+- LEDs freezing while music (or sound) played.
+- SPI Setup moved driver's file
+1.83 02.08.2018 (Driver v 1.1 is required)
+- Fixed: Temp. reading speed fixed
+- Fixed: Dots mixed up (driver was updated to v. 1.1)
+- Fixed: RGB LEDs reading from EEPROM
+- Fixed: Check for entering data from GPS in range
+1.82 18.07.2018
+- Dual Date Format
+1.81 18.02.2018
+- Temp. sensor present analyze
+1.80 06.08.2017
+- Added: Date and Time GPS synchronization
+1.70   30.07.2017
+- Added  IR remote control support (Sony RM-X151) ("MODE", "UP", "DOWN")
+1.60   24.07.2017
+- Added: Temperature reading mode in menu and slot machine transaction
+1.0.31 27.04.2017
+- Added: antipoisoning effect - slot machine
+1.021 31.01.2017
+- Added: time synchronizing each 10 seconds
+- Fixed: not correct time reading from RTC while start up
+1.02 17.10.2016
+- Fixed: RGB color controls
+- Update to Arduino IDE 1.6.12 (Time.h replaced to TimeLib.h)
+1.01
+- Added RGB LEDs lock(by UP and Down Buttons)
+- Added Down and Up buttons pause and resume self testing
+0.0 25.09.2016
+- update to HW ver 1.1
+0.0 25.05.2016
+- ??
+*/
+
+const String FirmwareVersion = "018601";
+#define HardwareVersion "NCS314 for HW 2.x"
 //Format                _X.XXX_
-//NIXIE CLOCK SHIELD NCS314 v 2.x by GRA & AFCH (fominalec@gmail.com)
-//1.86 23.02.2020
-//GPS synchronization algorithm changed
-//1.85.3 23.02.2020
-//Added: DS3231 internal temperature sensor self test: 5 beeps if fail.
-//1.85.2 21.02.2020
-//GPS parser has been replaced by NEOGPS
-//1.85 24.04.2019
-//Fixed: Bug with time zones more than +-9
-//1.84 08.04.2019
-//LEDs functions moved to external file
-//LEDs freezing while music (or sound) played.
-//SPI Setup moved driver's file
-//1.83 02.08.2018 (Driver v 1.1 is required)
-//Fixed: Temp. reading speed fixed
-//Fixed: Dots mixed up (driver was updated to v. 1.1)
-//Fixed: RGB LEDs reading from EEPROM
-//Fixed: Check for entering data from GPS in range
-//1.82  18.07.2018 Dual Date Format
-//1.81  18.02.2018 Temp. sensor present analyze
-//1.80   06.08.2017
-//Added: Date and Time GPS synchronization
-//1.70   30.07.2017
-//Added  IR remote control support (Sony RM-X151) ("MODE", "UP", "DOWN")
-//1.60   24_07_2017
-//Added: Temperature reading mode in menu and slot machine transaction
-//1.0.31 27_04_2017
-//Added: antipoisoning effect - slot machine
-//1.021 31.01.2017
-//Added: time synchronizing each 10 seconds
-//Fixed: not correct time reading from RTC while start up
-//1.02 17.10.2016
-//Fixed: RGB color controls
-//Update to Arduino IDE 1.6.12 (Time.h replaced to TimeLib.h)
-//1.01
-//Added RGB LEDs lock(by UP and Down Buttons)
-//Added Down and Up buttons pause and resume self testing
-//25.09.2016 update to HW ver 1.1
-//25.05.2016
+
 
 //#define tubes8
 #define tubes6
@@ -51,6 +66,7 @@ const String FirmwareVersion = "018600";
       - Enables or disables the (loud) test song on startup
     STARTUP_DO_LIGHT_SHOW
       - Enables or disables the LED light show / test on startup
+      - One color of LED flashes briefly still, but no effort was added to fix this
     FLASH_NEON_SEPARATORS
       - Enables or disables the flashing of the neon neon digit separators
     SHOW_DATE_INTERMITTENTLY
