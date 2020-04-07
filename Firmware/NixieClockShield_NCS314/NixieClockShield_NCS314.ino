@@ -460,7 +460,7 @@ int GreenLight = 0;
 int BlueLight = 0;
 unsigned long prevTime = 0; // time of lase tube was lit
 unsigned long prevTime4FireWorks = 0; //time of last RGB changed
-//int minuteL=0; //младшая цифра минут
+//int minuteL=0; //The lower digit of minutes
 
 /***************************************************************************************************************
   MAIN Programm

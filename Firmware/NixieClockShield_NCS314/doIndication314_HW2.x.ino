@@ -1,10 +1,16 @@
-//driver for NCM107+NCT318+NCT818, NCS312, NCS314 HW2.x (registers HV5122)
-//driver version 1.2
-//1 on register's output will turn on a digit 
+/*
+  Driver v1.2 for NCM107+NCT318+NCT818, NCS312, NCS314 HW2.x (registers HV5122)
 
+  Info
+    - 1 on register's output will turn on a digit 
 
-//v1.2 SPI setup moved to driver's file
-//v1.1 Mixed up on/off for dots
+  Changelog
+  1.2
+    - SPI setup moved to driver's file
+  1.1
+    - Mixed up on/off for dots
+*/
+
 
 #include "doIndication314_HW2.x.h"
 
@@ -34,8 +40,8 @@ void doIndication()
   //Serial.println(stringToDisplay);
   
   /**********************************************************
-   * Подготавливаем данные по 32бита 3 раза
-   * Формат данных [H1][H2}[M1][M2][S1][Y1][Y2]
+   * Prepare data on 32bits 3 times
+   * Data Format [H1][H2][M1][M2][S1][Y1][Y2]
    *********************************************************/
    
   digitalWrite(LEpin, LOW); 
