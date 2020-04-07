@@ -45,8 +45,16 @@ const String FirmwareVersion = "018600";
 #define tubes6
 //#define tubes4
 
-const bool FLASH_NEON_SEPARATORS = false; // Controls the doDotBlink() function
-// const bool SHOW_DATE_INTERMITTENTLY = false;
+/*
+  Below are some behavior modifiers.
+  FLASH_NEON_SEPARATORS
+    - Enables or disables the flashing of the neon neon digit separators
+  SHOW_DATE_INTERMITTENTLY
+    - Enables or disables the display of the current date whenever the anti-poisoning routine runs
+
+*/
+const bool FLASH_NEON_SEPARATORS = false;
+const bool SHOW_DATE_INTERMITTENTLY = false;
 
 #include <SPI.h>
 #include <Wire.h>
@@ -1178,7 +1186,10 @@ void modesChanger()
   if (editMode == true) return;
   static unsigned long lastTimeModeChanged = millis();
   static unsigned long lastTimeAntiPoisoningIterate = millis();
-  static int transnumber = 0;
+  static int transnumber = 0; // 0 = show date, 1 = show temp, 2 = show time
+  if (!SHOW_DATE_INTERMITTENTLY) {
+    transnumber = 2;
+  }
   if ((millis() - lastTimeModeChanged) > modesChangePeriod)
   {
     lastTimeModeChanged = millis();
