@@ -47,14 +47,20 @@ const String FirmwareVersion = "018600";
 
 /*
   Below are some behavior modifiers.
-  FLASH_NEON_SEPARATORS
-    - Enables or disables the flashing of the neon neon digit separators
-  SHOW_DATE_INTERMITTENTLY
-    - Enables or disables the display of the current date whenever the anti-poisoning routine runs
-
+    STARTUP_PLAY_TEST_SONG
+      - Enables or disables the (loud) test song on startup
+    STARTUP_DO_LIGHT_SHOW
+      - Enables or disables the LED light show / test on startup
+    FLASH_NEON_SEPARATORS
+      - Enables or disables the flashing of the neon neon digit separators
+    SHOW_DATE_INTERMITTENTLY
+      - Enables or disables the display of the current date whenever the anti-poisoning routine runs
 */
+const bool STARTUP_PLAY_TEST_SONG = false;
+const bool STARTUP_DO_LIGHT_SHOW = false;
 const bool FLASH_NEON_SEPARATORS = false;
 const bool SHOW_DATE_INTERMITTENTLY = false;
+
 
 #include <SPI.h>
 #include <Wire.h>
@@ -805,11 +811,16 @@ void doTest()
   Serial.println(HardwareVersion);
   Serial.println(F("Start Test"));
 
-  p = song;
-  parseSong(p);
-  //p=0; //need to be deleted
+  if (STARTUP_PLAY_TEST_SONG) {
+    p = song;
+    parseSong(p);
+    //p=0; //need to be deleted
+  }
 
-  LEDsTest();
+  if (STARTUP_DO_LIGHT_SHOW) {
+    LEDsTest();
+  }
+
 
 #ifdef tubes8
   String testStringArray[11] = {"00000000", "11111111", "22222222", "33333333", "44444444", "55555555", "66666666", "77777777", "88888888", "99999999", ""};
