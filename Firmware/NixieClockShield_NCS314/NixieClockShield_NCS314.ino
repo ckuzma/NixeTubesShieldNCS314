@@ -45,6 +45,9 @@ const String FirmwareVersion = "018600";
 #define tubes6
 //#define tubes4
 
+const bool FLASH_NEON_SEPARATORS = false; // Controls the doDotBlink() function
+// const bool SHOW_DATE_INTERMITTENTLY = false;
+
 #include <SPI.h>
 #include <Wire.h>
 #include <ClickButton.h>
@@ -190,7 +193,7 @@ int menuPosition = 0;
 byte blinkMask = B00000000; //bit mask for blinkin digits (1 - blink, 0 - constant light)
 int blankMask = B00000000; //bit mask for digits (1 - off, 0 - on)
 
-byte dotPattern = B00000000; //bit mask for separeting dots (1 - on, 0 - off)
+byte dotPattern = B00000000; //bit mask for separating dots (1 - on, 0 - off)
 //B10000000 - upper dots
 //B01000000 - lower dots
 
@@ -849,26 +852,31 @@ void doTest()
 
 void doDotBlink()
 {
-  //dotPattern = B11000000; return; //always on
-  //dotPattern = B00000000; return; //always off
-  static unsigned long lastTimeBlink = millis();
-  static bool dotState = 0;
-  if ((millis() - lastTimeBlink) > 1000)
-  {
-    lastTimeBlink = millis();
-    dotState = !dotState;
-    if (dotState)
+  if (FLASH_NEON_SEPARATORS) {
+    //dotPattern = B11000000; return; //always on
+    //dotPattern = B00000000; return; //always off
+    static unsigned long lastTimeBlink = millis();
+    static bool dotState = 0;
+    if ((millis() - lastTimeBlink) > 1000)
     {
-      dotPattern = B11000000;
-      /*digitalWrite(pinUpperDots, HIGH);
-        digitalWrite(pinLowerDots, HIGH);*/
+      lastTimeBlink = millis();
+      dotState = !dotState;
+      if (dotState)
+      {
+        dotPattern = B11000000;
+        /*digitalWrite(pinUpperDots, HIGH);
+          digitalWrite(pinLowerDots, HIGH);*/
+      }
+      else
+      {
+        dotPattern = B00000000;
+        /*digitalWrite(pinUpperDots, LOW);
+          digitalWrite(pinLowerDots, LOW);*/
+      }
     }
-    else
-    {
-      dotPattern = B00000000;
-      /*digitalWrite(pinUpperDots, LOW);
-        digitalWrite(pinLowerDots, LOW);*/
-    }
+  }
+  else {
+    dotPattern = B00000000;
   }
 }
 
