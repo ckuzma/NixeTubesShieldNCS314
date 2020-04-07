@@ -5,7 +5,7 @@ The firmware found in this repository is being written and modified to improve /
 
 ## Known Issues
 1. **IRremote Library**
-	- For reasons unknown, the most recent version of the IRremote library fails to compile for the Arduino Mega 2560 (and possibly other boards as well).  Until the problems are fixed, it is advised to use the version of the library found at [Libraries/IRremote](Libraries/IRremote).
+	- For reasons unknown, the most recent version of the IRremote library fails to compile for the Arduino Mega 2560 (and possibly other boards as well).  Until the problems are fixed, it is advised to use version 2.1.0 of the library, a copy of which can be found at [Libraries/IRremote](Libraries/IRremote).
 
 ## List of Changes
 ### Control booleans
