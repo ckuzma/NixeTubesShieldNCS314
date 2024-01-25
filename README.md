@@ -1,11 +1,9 @@
 # NixieTubesShieldNCS314
 
 ## About
-The firmware found in this repository is being written and modified to improve / tweak the functionality of a [GRA & AFCH](http://gra-afch.com) [NCS312 v1.3](https://gra-afch.com/catalog/nixie-tubes-clocks/nixie-tubes-clock-arduino-shield-ncs312-for-xussr-in-12-nixie-tubes/) Nixie tube shield connected to an Arduino Mega 2560.  The use of the shield and firmware allows the Arduino to become a full 6-digit IN-12 Nixie tube clock with neon dot digit separators (between the hours/minutes/seconds displays).
+The firmware code found in this repository is a modified fork of pre-existing work in order to make it more user-friendly.  More specifically, modifiers were added (see "List of Changes" below) to enable/disable particular functionality with simple boolean flags.
 
-## Known Issues
-1. **IRremote Library**
-	- For reasons unknown, the most recent version of the IRremote library fails to compile for the Arduino Mega 2560 (and possibly other boards as well).  Until the problems are fixed, it is advised to use version 2.1.0 of the library, a copy of which can be found at [Libraries/IRremote](Libraries/IRremote).
+This firmware was specifically compiled for the ["Hardware Version 2.x" version of the NCS312 v1.3](https://gra-afch.com/catalog/nixie-tubes-clocks/nixie-tubes-clock-arduino-shield-ncs312-for-xussr-in-12-nixie-tubes/) nixie tube clock shield running on an Arduino Mega 2560.  It should also be compatible with Arduino Uno-type boards, though GPS functionality will be lost.
 
 ## List of Changes
 ### Control booleans
@@ -13,9 +11,9 @@ The firmware found in this repository is being written and modified to improve /
 	- Enables or disables the (loud) test song on startup
 2. [STARTUP_DO_LIGHT_SHOW](https://github.com/ckuzma/NixieTubesShieldNCS314/blob/master/Firmware/NixieClockShield_NCS314/NixieClockShield_NCS314.ino#L76)
 	- Enables or disables the LED light show / test on startup
-	- One color of LED flashes briefly still, but no effort was added to fix this
 3. [FLASH_NEON_SEPARATORS](https://github.com/ckuzma/NixieTubesShieldNCS314/blob/master/Firmware/NixieClockShield_NCS314/NixieClockShield_NCS314.ino#L77)
-	- Enables or disables the flashing of the neon neon digit separators
+	- Enables or disables the flashing of the neon digit separators
+	- This was added so that I could quickly toggle on/off the neon digits on my clock as one of them failed and only blinking three looked tacky
 4. [SHOW_DATE_INTERMITTENTLY](https://github.com/ckuzma/NixieTubesShieldNCS314/blob/master/Firmware/NixieClockShield_NCS314/NixieClockShield_NCS314.ino#L78)
 	- Enables or disables the display of the current date whenever the anti-poisoning routine runs
 
