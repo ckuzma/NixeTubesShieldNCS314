@@ -3,7 +3,7 @@ const char HardwareVersion[] PROGMEM = {"NCS314 for HW 2.x HV5122 or HV5222"};
 /*
 NIXIE CLOCK SHIELD NCS314 v 2.x by GRA & AFCH (fominalec@gmail.com)
 
-- v.98.02 27.01.2024
+- v1.98.02 27.01.2024
   - Added toggle for night mode
 - v1.98.01 25.01.2024
   - Updated latest official firmware with personal ssettings tweaks by ckuzma (https://github.com/ckuzma)

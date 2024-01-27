@@ -16,6 +16,8 @@ This firmware was specifically compiled for the ["Hardware Version 2.x" version 
 	- This was added so that I could quickly toggle on/off the neon digits on my clock as one of them failed and only blinking three looked tacky
 4. [SHOW_DATE_INTERMITTENTLY](https://github.com/ckuzma/NixieTubesShieldNCS314/blob/master/Firmware/NixieClockShield_NCS314/NixieClockShield_NCS314.ino#L78)
 	- Enables or disables the display of the current date whenever the anti-poisoning routine runs
+5. [NIGHT_MODE_ENABLED](https://github.com/ckuzma/NixieTubesShieldNCS314/blob/master/Firmware/NixieClockShield_NCS314/NixieClockShield_NCS314.ino#L93)
+	- Enables or disables the shutdown of the display at night, a feature that was added with v1.98
 
 ## Credit
 This is a fork of the original [NixeTubesShieldNCS314](https://github.com/afch/NixeTubesShieldNCS314) project as written by [afch](https://github.com/afch).  That original project consisted a number of firmwares, both compiled and uncompiled, for loading onto various Arduino boards mated with Nixie tube clock shields made by [GRA & AFCH](http://gra-afch.com), who can also be contacted at [fominalec@gra-afch.com](mailto:fominalec@gra-afch.com).  For information on the shields themselves or answers as to why the firmware was written the way it is, please see [their website](http://gra-afch.com).
