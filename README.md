@@ -7,16 +7,16 @@ This firmware was specifically compiled for the ["Hardware Version 2.x" version 
 
 ## List of Changes
 ### Control booleans
-1. [STARTUP_PLAY_TEST_SONG](https://github.com/ckuzma/NixieTubesShieldNCS314/blob/master/Firmware/NixieClockShield_NCS314/NixieClockShield_NCS314.ino#L75)
+1. [STARTUP_PLAY_TEST_SONG](https://github.com/ckuzma/NixieTubesShieldNCS314/blob/19ecd705d4d68c30db8a44c294fcc924ac78f0de/Firmware/Hardware%20Version%202.x%20(HW2.x)/NixieClockShield_NCS314/NixieClockShield_NCS314.ino#L75)
 	- Enables or disables the (loud) test song on startup
-2. [STARTUP_DO_LIGHT_SHOW](https://github.com/ckuzma/NixieTubesShieldNCS314/blob/master/Firmware/NixieClockShield_NCS314/NixieClockShield_NCS314.ino#L76)
+2. [STARTUP_DO_LIGHT_SHOW](https://github.com/ckuzma/NixieTubesShieldNCS314/blob/19ecd705d4d68c30db8a44c294fcc924ac78f0de/Firmware/Hardware%20Version%202.x%20(HW2.x)/NixieClockShield_NCS314/NixieClockShield_NCS314.ino#L76)
 	- Enables or disables the LED light show / test on startup
-3. [FLASH_NEON_SEPARATORS](https://github.com/ckuzma/NixieTubesShieldNCS314/blob/master/Firmware/NixieClockShield_NCS314/NixieClockShield_NCS314.ino#L77)
+3. [FLASH_NEON_SEPARATORS](https://github.com/ckuzma/NixieTubesShieldNCS314/blob/19ecd705d4d68c30db8a44c294fcc924ac78f0de/Firmware/Hardware%20Version%202.x%20(HW2.x)/NixieClockShield_NCS314/NixieClockShield_NCS314.ino#L77)
 	- Enables or disables the flashing of the neon digit separators
 	- This was added so that I could quickly toggle on/off the neon digits on my clock as one of them failed and only blinking three looked tacky
-4. [SHOW_DATE_INTERMITTENTLY](https://github.com/ckuzma/NixieTubesShieldNCS314/blob/master/Firmware/NixieClockShield_NCS314/NixieClockShield_NCS314.ino#L78)
+4. [SHOW_DATE_INTERMITTENTLY](https://github.com/ckuzma/NixieTubesShieldNCS314/blob/19ecd705d4d68c30db8a44c294fcc924ac78f0de/Firmware/Hardware%20Version%202.x%20(HW2.x)/NixieClockShield_NCS314/NixieClockShield_NCS314.ino#L78)
 	- Enables or disables the display of the current date whenever the anti-poisoning routine runs
-5. [NIGHT_MODE_ENABLED](https://github.com/ckuzma/NixieTubesShieldNCS314/blob/master/Firmware/NixieClockShield_NCS314/NixieClockShield_NCS314.ino#L93)
+5. [NIGHT_MODE_ENABLED](https://github.com/ckuzma/NixieTubesShieldNCS314/blob/19ecd705d4d68c30db8a44c294fcc924ac78f0de/Firmware/Hardware%20Version%202.x%20(HW2.x)/NixieClockShield_NCS314/NixieClockShield_NCS314.ino#L93)
 	- Enables or disables the shutdown of the display at night, a feature that was added with v1.98
 
 ## Credit
