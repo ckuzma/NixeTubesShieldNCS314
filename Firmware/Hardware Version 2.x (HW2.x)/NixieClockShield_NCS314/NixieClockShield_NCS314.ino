@@ -1,8 +1,10 @@
-const String FirmwareVersion = "019801";
+const String FirmwareVersion = "019802";
 const char HardwareVersion[] PROGMEM = {"NCS314 for HW 2.x HV5122 or HV5222"};
 /*
 NIXIE CLOCK SHIELD NCS314 v 2.x by GRA & AFCH (fominalec@gmail.com)
 
+- v.98.02 27.01.2024
+  - Added toggle for night mode
 - v1.98.01 25.01.2024
   - Updated latest official firmware with personal ssettings tweaks by ckuzma (https://github.com/ckuzma)
 - v1.98 07.09.2023
@@ -88,6 +90,7 @@ const bool STARTUP_PLAY_TEST_SONG = false;
 const bool STARTUP_DO_LIGHT_SHOW = false;
 const bool FLASH_NEON_SEPARATORS = false;
 const bool SHOW_DATE_INTERMITTENTLY = false;
+const bool NIGHT_MODE_ENABLED = false;
 
 
 #include <SPI.h>
@@ -1566,29 +1569,33 @@ void RTC_Test()
 
 void CheckNightMode()
 {
-  static uint8_t prevHour = hour();
-
-  if (editMode == true) return;
-
-  if (prevHour != hour()) 
+  if (NIGHT_MODE_ENABLED)
   {
-    prevHour = hour();
-    if (hour() == value[OffHourIndex]) 
+    static uint8_t prevHour = hour();
+
+    if (editMode == true) return;
+
+    if (prevHour != hour()) 
     {
-      NightMode = true;
-      RGBLedsStateBeforeNightMode = RGBLedsOn;
-      //Serial.print(F("RGBLedsOn="));
-      //Serial.print(RGBLedsOn);
-      RGBLedsOn = false;
-      //Serial.println(F("NightMode ON"));
-    }
-    if (hour() == value[OnHourIndex]) 
-    {
-      //NightMode = false;
-      //RGBLedsOn = RGBLedsStateBeforeNightMode;
-      ExitFromNightMode();
+      prevHour = hour();
+      if (hour() == value[OffHourIndex]) 
+      {
+        NightMode = true;
+        RGBLedsStateBeforeNightMode = RGBLedsOn;
+        //Serial.print(F("RGBLedsOn="));
+        //Serial.print(RGBLedsOn);
+        RGBLedsOn = false;
+        //Serial.println(F("NightMode ON"));
+      }
+      if (hour() == value[OnHourIndex]) 
+      {
+        //NightMode = false;
+        //RGBLedsOn = RGBLedsStateBeforeNightMode;
+        ExitFromNightMode();
+      }
     }
   }
+  
 }
 
 void ExitFromNightMode()
